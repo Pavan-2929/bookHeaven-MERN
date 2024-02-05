@@ -29,7 +29,7 @@ function Header() {
     setIsMenuOpen(false);
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/auth/logout",
+        "https://bookheaven-backend.onrender.com/api/auth/logout",
         { withCredentials: true }
       );
 

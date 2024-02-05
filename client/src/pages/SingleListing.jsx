@@ -33,7 +33,7 @@ const SingleListing = () => {
         setError(false);
         setLoading(true);
         const listing = await axios.get(
-          `http://localhost:3000/api/listing/get/${params.id}`
+          `https://bookheaven-backend.onrender.com/api/listing/get/${params.id}`
         );
         if (listing.status === 200) {
           setListing(listing.data);
