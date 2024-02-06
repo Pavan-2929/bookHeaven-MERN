@@ -20,7 +20,7 @@ export const register = async (req, res, next) => {
 
     const newUser = await User.create({ username, email, password });
     const token = await newUser.generateToken();
-    const expiryTime = new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000);
+    const expiryTime = new Date(Date.now() +  24 * 60 * 60);
 
     res.cookie("token", token, { expires: expiryTime });
 
@@ -50,7 +50,8 @@ export const login = async (req, res, next) => {
     }
 
     const token = await validEmail.generateToken();
-    const expiryTime = new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000);
+    const expiryTime = new Date(Date.now() + 24 * 60 * 60);
+
 
     res.cookie("token", token, { expires: expiryTime });
     const userWithOutPassword = await User.findById(validEmail._id).select(
@@ -72,7 +73,8 @@ export const google = async (req, res, next) => {
       const { password, ...rest } = user._doc;
 
       const token = await user.generateToken();
-      const expiryTime = new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000);
+    const expiryTime = new Date(Date.now() + 24 * 60 * 60);
+
 
       res.cookie("token", token, { expires: expiryTime });
 
@@ -88,7 +90,8 @@ export const google = async (req, res, next) => {
       });
 
       const token = await newUser.generateToken();
-      const expiryTime = new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000);
+    const expiryTime = new Date(Date.now() + 24 * 60 * 60);
+
 
       res.cookie("token", token, { expires: expiryTime });
 

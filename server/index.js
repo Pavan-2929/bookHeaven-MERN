@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import authRouter from "./routes/auth.routes.js";
 import userRotuer from "./routes/user.routes.js";
 import listingRouter from "./routes/listing.routes.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(
@@ -12,6 +13,7 @@ app.use(
 );
 app.use(express.json())
 dotenv.config();
+app.use(cookieParser())
 
 const PORT = 3000 || process.env.PORT;
 
